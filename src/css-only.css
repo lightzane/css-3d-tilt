@@ -1,0 +1,123 @@
+/* 
+  Must have prior knowledge on CSS Grid
+
+  See: https://lightzane.github.io/learn-css-grid/
+  And scroll down to "Mouse Track example"
+*/
+
+.pre-container {
+  position: relative;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+pre {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+
+  transition: transform 250ms ease;
+  --angle: 25deg;
+}
+
+/* mouse tracker elements */
+.pre-container > div {
+  z-index: 10;
+  position: absolute;
+  inset: 0;
+  /* Enable grid guidelines */
+  /* outline: 1px solid lime; */
+}
+
+/* start: position grids */
+.pre-container > div:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.pre-container > div:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.pre-container > div:nth-child(3) {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+.pre-container > div:nth-child(4) {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.pre-container > div:nth-child(5) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.pre-container > div:nth-child(6) {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.pre-container > div:nth-child(7) {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.pre-container > div:nth-child(8) {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.pre-container > div:nth-child(9) {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+/* end: position grids */
+
+/* start: hover grids */
+.pre-container > div:nth-child(1):hover ~ pre {
+  --rotateX: var(--angle);
+  --rotateY: calc(var(--angle) * -1);
+}
+
+.pre-container > div:nth-child(2):hover ~ pre {
+  --rotateX: var(--angle);
+  --rotateY: 0deg;
+}
+
+.pre-container > div:nth-child(3):hover ~ pre {
+  --rotateX: var(--angle);
+  --rotateY: var(--angle);
+}
+
+.pre-container > div:nth-child(4):hover ~ pre {
+  --rotateX: 0deg;
+  --rotateY: calc(var(--angle) * -1);
+}
+
+.pre-container > div:nth-child(5):hover ~ pre {
+  --rotateX: 0deg;
+  --rotateY: 0deg;
+}
+
+.pre-container > div:nth-child(6):hover ~ pre {
+  --rotateX: 0deg;
+  --rotateY: var(--angle);
+}
+
+.pre-container > div:nth-child(7):hover ~ pre {
+  --rotateX: calc(var(--angle) * -1);
+  --rotateY: calc(var(--angle) * -1);
+}
+
+.pre-container > div:nth-child(8):hover ~ pre {
+  --rotateX: calc(var(--angle) * -1);
+  --rotateY: 0deg;
+}
+
+.pre-container > div:nth-child(9):hover ~ pre {
+  --rotateX: calc(var(--angle) * -1);
+  --rotateY: var(--angle);
+}
+/* end: hover grids */

@@ -1,0 +1,112 @@
+:root {
+  /* prettier-ignore */
+  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --cyan: #8be9fd;
+  --pink: #ff79c6;
+  --black: #282a36;
+  --white: #e4f0fb;
+}
+
+body {
+  font-family: var(--font);
+  display: grid;
+  place-content: center;
+  color: var(--white);
+  background: var(--black);
+  background-image: conic-gradient(
+    from 0deg at 50% 50%,
+    cyan,
+    purple,
+    purple,
+    cyan
+  );
+  background-blend-mode: multiply;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+
+  transition: 300ms ease-in-out;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+a:hover {
+  background-color: var(--cyan);
+  color: var(--black);
+}
+
+/* syntax highlighting */
+pre {
+  --selector: var(--pink);
+  --punctuation: var(--white);
+  --property: var(--cyan);
+
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 2rem;
+  border-radius: 1rem;
+  user-select: none;
+
+  position: relative;
+
+  /* * 3D Getting Started * */
+  transform-style: preserve-3d; /* enables "z-axis" for 3D space -- translateZ() */
+
+  /* prettier-ignore */
+  transform: 
+    perspective(5000px)
+    rotateY(var(--rotateY)) 
+    rotateX(var(--rotateX));
+}
+
+code {
+  font-family: 'Fira Code', 'Menlo', 'Courier New', Courier, monospace;
+}
+
+pre[class*='language-'] {
+  background: var(--black);
+}
+
+pre > * {
+  text-shadow: 0 0 0.3rem currentColor;
+}
+
+pre::before,
+pre::after {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+}
+
+/* shadow */
+pre::before {
+  inset: 0.75rem;
+  background: black;
+  transform: translateZ(-49px);
+  filter: blur(15px);
+  opacity: 0.5;
+}
+
+/* gradient background */
+pre::after {
+  inset: -1rem;
+  background: linear-gradient(-45deg, red, blue);
+  transform: translateZ(-50px);
+}
+
+.token.selector {
+  color: var(--selector);
+}
+
+.token.punctuation {
+  color: var(--punctuation);
+}
+
+.token.property,
+.token.property + .punctuation {
+  /* "+" means adjacent (affects style for ".punctuation" adjacent to ".property") */
+  color: var(--property);
+}
